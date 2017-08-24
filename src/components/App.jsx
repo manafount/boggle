@@ -115,7 +115,7 @@ class App extends Component {
   submitWord() {
     let pointsArr = [0, 0, 0, 1, 1, 2, 3, 5, 11];
     let word = this.state.curWord.join('');
-    let score = (word.length > pointsArr.length ? 11 : pointsArr[word.length]);
+    let score = (word.length >= pointsArr.length ? 11 : pointsArr[word.length]);
 
     if (_.includes(this.state.words, word)){
       return;
