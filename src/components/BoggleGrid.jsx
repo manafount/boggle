@@ -3,23 +3,22 @@ import React, { Component } from 'react';
 import BoggleSquare from './BoggleSquare';
 
 class BoggleGrid extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
-    let rows;
+    let squares;
 
-    if(this.props.rows) {
-      rows = this.props.rows.map(row => {
-        return row.split('').map(letter => {
-          return <BoggleSquare letter={letter}/>;
-        });
+    if(this.props.tiles) {
+      squares = this.props.tiles.map((tile) => {
+        return <BoggleSquare key={'tile ' + tile.id}
+                             id={tile.id}
+                             letter={tile.letter}
+                             selected={tile.selected}
+                             selectLetter={this.props.selectLetter}
+                             deselectLetter={this.props.deselectLetter}/>;
       });
     }
     return (
       <div className="boggle-grid-container">
-        {rows}
+        {squares}
       </div>
     );
   }
